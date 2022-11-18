@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="text_header_bodoni">
+        <item name="android:fontFamily">@font/bodoni_bold</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="text_small_header_bodoni">
+        <item name="android:fontFamily">@font/bodoni_bold</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="input_light_form">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:background">@drawable/bg_black_button</item>
+        <item name="android:backgroundTint">@color/light_grey</item>
+        <item name="android:ems">10</item>
+        <item name="android:fontFamily">@font/bitter_regular</item>
+        <item name="android:paddingStart">@dimen/space</item>
+    </style>
+
+    <style name="main_button">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">52dp</item>
+        <item name="backgroundTint">@null</item>
+        <item name="android:background">@drawable/bg_black_button</item>
+        <item name="android:fontFamily">@font/bodoni_bold</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="switch_main">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">12dp</item>
+        <item name="android:layout_marginEnd">@dimen/space</item>
+        <item name="android:fontFamily">@font/bitter_regular</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:textColor">@color/green_600</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+</resources>

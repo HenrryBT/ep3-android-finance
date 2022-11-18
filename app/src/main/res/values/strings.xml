@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">EP3</string>
+    <string name="sign_in">Sign In</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="finance_app">Finance App</string>
+    <string name="title_activity_finance">FinanceActivity</string>
+
+    <string name="tab_text_1">Register</string>
+    <string name="tab_text_2">Movements</string>
+    <string name="tab_text_3">Bills</string>
+    <string name="tab_text_4">Gifts</string>
+
+    <string name="keep_login">Keep login</string>
+    <string name="main_cover_description">Girl with a ping bank</string>
+    <string name="logout">Logout</string>
+    <string name="profile_photo">Profile photo</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="description">Description</string>
+    <string name="amount">$ Amount</string>
+    <string name="register">Register</string>
+    <string name="date">date</string>
+    <string name="bill">$ bill</string>
+    <string name="email_gifts">daniel_cesar@gmail.com</string>
+</resources>
