@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/grey_200"
-    tools:context=".ui.fragments.RegisterFragment">
+    tools:context=".fragments.RegisterFragment">
 
     <ImageView
         android:id="@+id/imageView3"
@@ -82,7 +82,7 @@
             tools:ignore="TextContrastCheck" />
 
         <Button
-            android:id="@+id/btn_share_this"
+            android:id="@+id/btn_register_expenses_income"
             style="@style/main_button"
             android:layout_width="0dp"
             android:layout_height="52dp"

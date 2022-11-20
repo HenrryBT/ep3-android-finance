@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layoutDescription="@xml/fragment_gifts_scene"
-    tools:context=".ui.fragments.GiftsFragment">
+    tools:context=".fragments.GiftsFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/bg"

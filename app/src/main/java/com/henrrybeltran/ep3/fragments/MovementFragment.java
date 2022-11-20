@@ -1,4 +1,4 @@
-package com.henrrybeltran.ep3.ui.fragments;
+package com.henrrybeltran.ep3.fragments;
 
 import android.database.Cursor;
 import android.os.Bundle;
@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.henrrybeltran.ep3.R;
 import com.henrrybeltran.ep3.adapters.MovementAdapter;
@@ -25,10 +26,17 @@ public class MovementFragment extends Fragment {
     private RecyclerView rvMovement;
     private final ArrayList<HashMap<String, String>> movesList = new ArrayList<>();
 
+    public MovementFragment() {
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         movementAdapter = new MovementAdapter();
-
         return inflater.inflate(R.layout.fragment_movement, container, false);
     }
 
@@ -36,6 +44,7 @@ public class MovementFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        Toast.makeText(getActivity(), "Movement Fragment", Toast.LENGTH_SHORT).show();
         rvMovement = view.findViewById(R.id.rv_movement);
         readData();
     }
