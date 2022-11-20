@@ -42,10 +42,14 @@ public class MovementAdapter extends RecyclerView.Adapter<MovementAdapter.ViewHo
 
         double result = sign * amount;
 
-        if (sign < 0)
+        if (sign < 0) {
             holder.tvAmount.setTextColor(Color.parseColor("#FFCD4F40"));
+        } else {
+            holder.tvAmount.setTextColor(Color.parseColor("#FF50674F"));
 
-        holder.tvDate.setText(map.get("date"));
+        }
+
+            holder.tvDate.setText(map.get("date"));
         holder.tvDescription.setText(map.get("description"));
         holder.tvAmount.setText("$ " + result);
     }

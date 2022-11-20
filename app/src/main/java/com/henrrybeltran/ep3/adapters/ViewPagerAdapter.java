@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class ViewPagerAdapter extends FragmentStateAdapter {
     private static final int pages_size = 4;
-    private final ArrayList<Fragment> fragments = new ArrayList<>();
+    public final ArrayList<Fragment> fragments = new ArrayList<>();
 
     public ViewPagerAdapter(@NonNull FragmentActivity fragmentActivity) {
         super(fragmentActivity);
@@ -37,12 +37,21 @@ public class ViewPagerAdapter extends FragmentStateAdapter {
                 fragments.add(new GiftsFragment());
                 break;
         }
-
         return fragments.get(position);
     }
 
     @Override
     public int getItemCount() {
         return pages_size;
+    }
+
+    public void updateFragments(int position) {
+        if (position == 1) {
+            MovementFragment movementFragment = (MovementFragment) fragments.get(position);
+            movementFragment.updateList();
+        }else if (position == 2) {
+            BillsFragment billsFragment = (BillsFragment) fragments.get(position);
+            billsFragment.updateBillsList();
+        }
     }
 }

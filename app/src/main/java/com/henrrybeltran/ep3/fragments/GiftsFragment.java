@@ -30,6 +30,5 @@ public class GiftsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Toast.makeText(getActivity(), "Gifts Fragment", Toast.LENGTH_SHORT).show();
     }
 }

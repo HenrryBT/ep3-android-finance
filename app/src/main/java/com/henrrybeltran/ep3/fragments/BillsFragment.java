@@ -24,9 +24,16 @@ import java.util.HashMap;
 import java.util.Objects;
 
 public class BillsFragment extends Fragment {
+    private static boolean isBillsReady = false;
+
+    private SQLiteRepository liteRepository;
     private BillsAdapter billsAdapter;
     private RecyclerView rvBills;
     private final ArrayList<HashMap<String, String>> billList = new ArrayList<>();
+
+    public static boolean isBillsReady() {
+        return isBillsReady;
+    }
 
     public BillsFragment() {
     }
@@ -38,7 +45,6 @@ public class BillsFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        billsAdapter = new BillsAdapter();
         return inflater.inflate(R.layout.fragment_bills, container, false);
     }
 
@@ -46,13 +52,15 @@ public class BillsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Toast.makeText(getActivity(), "Bills Fragment", Toast.LENGTH_SHORT).show();
+        isBillsReady = true;
         rvBills = view.findViewById(R.id.rv_bills);
+        liteRepository = new SQLiteRepository(getActivity());
+        billsAdapter = new BillsAdapter();
+
         readData();
     }
 
     private void readData() {
-        SQLiteRepository liteRepository = new SQLiteRepository(getActivity());
         Cursor cursor = liteRepository.movementSelect(liteRepository);
 
         if (cursor != null) {
@@ -85,5 +93,37 @@ public class BillsFragment extends Fragment {
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         rvBills.setLayoutManager(linearLayoutManager);
+    }
+
+    public void updateBillsList() {
+        Cursor cursor = liteRepository.movementSelect(liteRepository);
+        billList.clear();
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                do {
+                    HashMap<String, String> map = new HashMap<>();
+                    String id = cursor.getString(cursor.getColumnIndexOrThrow("id"));
+                    String date = cursor.getString(cursor.getColumnIndexOrThrow("date"));
+                    String description = cursor.getString(cursor.getColumnIndexOrThrow("description"));
+                    String amount = cursor.getString(cursor.getColumnIndexOrThrow("amount"));
+                    String movement = cursor.getString(cursor.getColumnIndexOrThrow("movement"));
+
+                    map.put("id", id);
+                    map.put("date", date);
+                    map.put("description", description);
+                    map.put("amount", amount);
+                    map.put("movement", movement);
+
+                    int sign = Integer.parseInt(Objects.requireNonNull(map.get("movement")));
+
+                    if (sign > 0) continue;
+
+                    billList.add(map);
+                } while (cursor.moveToNext());
+            }
+        }
+
+        billsAdapter.setList(billList);
+        rvBills.setAdapter(billsAdapter);
     }
 }

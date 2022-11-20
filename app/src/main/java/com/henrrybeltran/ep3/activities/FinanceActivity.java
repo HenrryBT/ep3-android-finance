@@ -10,12 +10,15 @@ import com.google.android.material.tabs.TabLayout;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.view.View;
 
 import com.google.android.material.tabs.TabLayoutMediator;
 import com.henrrybeltran.ep3.adapters.ViewPagerAdapter;
 import com.henrrybeltran.ep3.databinding.ActivityFinanceBinding;
+import com.henrrybeltran.ep3.fragments.BillsFragment;
+import com.henrrybeltran.ep3.fragments.MovementFragment;
 import com.henrrybeltran.ep3.utils.DataPreference;
 
 import java.util.Arrays;
@@ -24,7 +27,7 @@ import java.util.Objects;
 
 public class FinanceActivity extends AppCompatActivity implements View.OnClickListener, TabLayoutMediator.TabConfigurationStrategy {
     private ActivityFinanceBinding binding;
-    List<String> tabName = Arrays.asList("Register", "Movements", "Bills", "Gifts");
+    private List<String> tabName = Arrays.asList("Register", "Movements", "Bills", "Gifts");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,11 +39,23 @@ public class FinanceActivity extends AppCompatActivity implements View.OnClickLi
         binding.viewPager.setAdapter(adapter);
 
         FloatingActionButton fab = binding.fab;
-        
+
         fab.setOnClickListener(this);
 
         new TabLayoutMediator(binding.tabs, binding.viewPager, this).attach();
-        
+        binding.viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+
+                if (position == 1 && MovementFragment.isMovementReady()) {
+                    adapter.updateFragments(1);
+                } else if (position == 2 && BillsFragment.isBillsReady()) {
+                    adapter.updateFragments(2);
+                }
+            }
+        });
+
         binding.tvUserName.setText(getNameOfSession());
     }
 

@@ -9,6 +9,14 @@
         motion:duration="800"
         motion:motionInterpolator="easeOut">
        <KeyFrameSet>
+           <KeyAttribute
+               motion:motionTarget="@+id/cardView2"
+               motion:framePosition="0"
+               android:scaleX="0" />
+           <KeyAttribute
+               motion:motionTarget="@+id/cardView2"
+               motion:framePosition="0"
+               android:scaleY="0" />
        </KeyFrameSet>
         <OnClick motion:targetId="@id/btn_share_this" />
     </Transition>
